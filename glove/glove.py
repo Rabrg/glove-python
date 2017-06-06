@@ -250,10 +250,11 @@ class Glove(object):
                 tokens = line.split(' ')
 
                 word = tokens[0]
-                entries = tokens[1:]
+                if word not in dct:
+                    entries = tokens[1:]
 
-                dct[word] = i
-                vectors.extend(float(x) for x in entries)
+                    dct[word] = i
+                    vectors.extend(float(x) for x in entries)
 
         # Infer word vectors dimensions.
         no_components = len(entries)
